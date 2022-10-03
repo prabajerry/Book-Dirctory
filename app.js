@@ -41,10 +41,16 @@ var list =[
         year:1980,
         edition:"hardcover edition"
     },
-
-
 ]
 console.log(list);
+app.get('all-BookList',(req,res)=>{
+    res.send(list)
+})
+console.log(list);
+
+
+
+
 app.listen( 1998 ,() => {
     console.log("sever is running");
 })
