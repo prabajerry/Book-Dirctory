@@ -42,15 +42,31 @@ var list =[
         edition:"hardcover edition"
     },
 ]
-console.log(list);
-app.get('all-BookList',(req,res)=>{
+app.get('/all-BookList',(req,res)=>{
     res.send(list)
 })
-console.log(list);
+
+app.post('/find book by book name',(req,res)=>{
+    console.log(list[0]);
+
+        let bookName=[]
+        for (let index = 0; index < list.length; index++) {
+           console.log(list[index]);
+            if(list[index].Bookname == "You Can" )
+            {
+                bookName.push(list[index])
+            }   
+        }
+        
+        res.send(bookName)
+    })
+    
+    
 
 
 
 
-app.listen( 1998 ,() => {
-    console.log("sever is running");
+
+app.listen( 2000 ,() => {
+   /* console.log("sever is running");*/
 })
