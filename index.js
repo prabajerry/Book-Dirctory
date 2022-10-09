@@ -13,7 +13,7 @@ var list =[
     },
     {
         
-        Bookname : "secret",
+        Bookname : " ",
         AutherName: "Rhonda Byrne",
         Publishing : "Beyond words",
         year:2006,
@@ -46,9 +46,8 @@ app.get('/all-BookList',(req,res)=>{
     res.send(list)
 })
 
-app.post('/find book by book name',(req,res)=>{
-    console.log(list[0]);
-
+app.get('/findBookByBookName',(req,res)=>{
+        console.log(list[4]);
         let bookName=[]
         for (let index = 0; index < list.length; index++) {
            console.log(list[index]);
@@ -60,13 +59,29 @@ app.post('/find book by book name',(req,res)=>{
         
         res.send(bookName)
     })
+    console.log("you can");
+
     
+    app.get('/find book by audher',(req,res)=>{
+        let audher=[]
+        for (let index = 0; index < list.length; index++) {
+           console.log(list[index]);
+            if(list[index].AutherName == 'APJ')
+            {
+            audher.push(list[index])
+            }
     
+        }
+        
+        console.log("audher");
+        res.send(audher)
+    
+    })
 
 
 
 
 
-app.listen( 2000 ,() => {
-   /* console.log("sever is running");*/
+app.listen( 2700,() => {
+    console.log("sever is running");
 })
