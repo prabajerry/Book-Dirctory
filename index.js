@@ -13,7 +13,7 @@ var list =[
     },
     {
         
-        Bookname : " ",
+        Bookname : " secret",
         AutherName: "Rhonda Byrne",
         Publishing : "Beyond words",
         year:2006,
@@ -59,25 +59,75 @@ app.get('/findBookByBookName',(req,res)=>{
         
         res.send(bookName)
     })
-    console.log("you can");
-
     
-    app.get('/find book by audher',(req,res)=>{
+    app.get('/findBookByAudher',(req,res)=>{
         let audher=[]
         for (let index = 0; index < list.length; index++) {
            console.log(list[index]);
-            if(list[index].AutherName == 'APJ')
+            if(list[index].AutherName == 'Frank Abagnale jr')
             {
             audher.push(list[index])
             }
     
         }
         
-        console.log("audher");
         res.send(audher)
-    
+        
     })
+   
 
+
+    app.get('/findBookByPublishind',(req,res) =>{
+        var publish=[]
+        for (let index = 0; index < list.length; index++) {
+            console.log(list[index]);
+            if (list[index].Publishing == "Grosset & Dunlap") {
+                publish.push(list[index])
+            
+        }
+    }
+    res.send(publish)
+})
+
+
+
+app.get('/findBookByYear',(req,res) =>{
+    var year =[]
+    for (let index = 0; index < list.length; index++) {
+        console.log(list[index]);
+        if(list[index].year== 2006){
+            year.push(list[index])
+        }
+        
+    }
+    res.send(year)
+
+})
+app.post('/findBook',(req,res) =>{
+    let book = req.body.Bookname;
+    console.log(book);
+    var bookn=[]
+    for (let index = 0; index < list.length; index++) {
+        if(list[index].Bookname == book){
+            bookn.push(list[index])
+        }
+    }
+    res.send(bookn)
+    
+})
+app.post('/findAudher',(req,res) =>{
+    const Auther =req.body.AutherName;
+    console.log(Auther);
+    var Bookaudher =[]
+    for (let index = 0; index < list.length; index++) {
+        if (list[index].AutherName == Auther) {
+            Bookaudher.push(list[index])
+            
+        }
+    }
+    res.send(Bookaudher)
+})
+    
 
 
 
