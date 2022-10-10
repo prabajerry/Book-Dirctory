@@ -77,7 +77,7 @@ app.get('/findBookByBookName',(req,res)=>{
    
 
 
-    app.get('/findBookByPublishind',(req,res) =>{
+    app.get('/findBookByPublishing',(req,res) =>{
         var publish=[]
         for (let index = 0; index < list.length; index++) {
             console.log(list[index]);
@@ -104,9 +104,9 @@ app.get('/findBookByYear',(req,res) =>{
 
 })
 app.post('/findBook',(req,res) =>{
-    let book = req.body.Bookname;
+    let book = req.body.book
     console.log(book);
-    var bookn=[]
+    var bookn = []
     for (let index = 0; index < list.length; index++) {
         if(list[index].Bookname == book){
             bookn.push(list[index])
@@ -116,7 +116,7 @@ app.post('/findBook',(req,res) =>{
     
 })
 app.post('/findAudher',(req,res) =>{
-    const Auther =req.body.AutherName;
+    const Auther = req.body.Auther;
     console.log(Auther);
     var Bookaudher =[]
     for (let index = 0; index < list.length; index++) {
@@ -127,11 +127,19 @@ app.post('/findAudher',(req,res) =>{
     }
     res.send(Bookaudher)
 })
-    
 
 
-
-
+app.post('/publish',(req,res) =>{
+    var published = req.body.published;
+    console.log(published);
+    var element=[]
+    for (let index = 0; index < list.length; index++) {
+        if (list[index].Publishing==published) {
+            element.push(list[index])  
+        }
+    }
+    res.send(element)
+})
 app.listen( 2700,() => {
     console.log("sever is running");
 })
