@@ -1,7 +1,9 @@
 const express =require('express')
 const bodyParser=require('body-parser')
 const app = express()
-const { v4: uuidv4 } = require('uuid');
+const  uuid = require('uuid');
+const uniguId = uuid.v4
+console.log(uniguId);
 app.use(bodyParser.json());
 var list =[
 
